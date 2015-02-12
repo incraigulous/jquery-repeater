@@ -1,0 +1,15 @@
+{
+  "name": "class.js",
+  "homepage": "https://github.com/FinalAngel/classjs",
+  "version": "1.0.0",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "cb5f6754062a44c3375ab8c1be66e05c209d3ab2"
+  },
+  "_source": "git://github.com/FinalAngel/classjs.git",
+  "_target": "~1.0.0",
+  "_originalSource": "class.js",
+  "_direct": true
+}

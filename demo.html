@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JQuery Repeater Demo</title>
+
+    <!-- Bootstrap isn't required. I'm just using it for the demo. -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        .form-group {
+            margin-top: 15px;
+        }
+
+        .repeatable {
+            position: relative;
+            width: 400px;
+        }
+
+        .repeatable .repeater-add {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            right: -60px;
+            top: 60px;
+            font-size: 2em;
+        }
+
+        .repeatable:last-child .repeater-add {
+            display:  block;
+        }
+
+        .repeatable .repeater-remove {
+            cursor: pointer;
+            position: absolute;
+            right: -60px;
+            top: 60px;
+            font-size: 2em;
+        }
+
+        .repeatable:last-child .repeater-remove {
+            display:  none;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+
+        <h1>JQuery Repeater Demo</h1>
+
+        <form role="form">
+            <div class="repeatable">
+                <div class="form-group">
+                    <label>Foo Bar:</label>
+                    <input type="text" class="form-control" id="foo-bar" name="foo[][bar]">
+                </div>
+                <div class="form-group">
+                    <label>Foo Baz:</label>
+                    <input type="text" class="form-control" id="foo-baz" name="foo[][baz]">
+                </div>
+                <span class="glyphicon glyphicon-plus repeater-add" aria-hidden="true"></span> <span class="glyphicon glyphicon-minus repeater-remove" aria-hidden="true"></span>
+            </div>
+         </form>
+</div>
+
+<!-- jQuery and class.js are required -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/class.js/src/class.min.js"></script>
+
+<script src="jquery-repeater.js"></script>
+
+<!-- Bootstrap isn't required. I'm just using it for the demo. -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    //All options are optional.
+    new Repeater($('.repeatable'), {
+        addSelector: '.repeater-add', //The css selector for the add button.
+        removeSelector: '.repeater-remove', //The css selector for the remove button.
+        withDataAndEvents: false, //Should data and events on repeatable sections be cloned?
+        deepWithDataAndEvents: false, //Should data and events of repeatable sections descendants be cloned?
+        addCallback: function(){}, //A callback function that generated repeatable sections will be passed into.
+        wrapperHtml: "<div class='repeater-wrap'></div>" //HTML for an element to wrap all repeatable sections in.
+    });
+</script>
+</body>
+</html>
