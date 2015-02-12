@@ -18,3 +18,9 @@ Instantiate a new Repeater class and pass in your element. You can also pass an 
         wrapperHtml: "<div class='repeater-wrap'></div>" //HTML for an element to wrap all repeatable sections in.
     });
 ````
+
+##How to install it
+Download or clone it from directly from Github or install via Bower:
+````
+bower install jquery-repeater
+````
