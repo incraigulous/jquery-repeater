@@ -1,4 +1,4 @@
-# jquery-repeater
+# JQuery Repeater
 jQuery repeating fields. Includes the ability to add and remove fields and keeps up with ID and name incrementing. Easy Peasy. Requires [class.js](https://classjs.readthedocs.org/en/latest/) which is included in the bower_components folder if you're not using Bower.
 
 ##Demo
