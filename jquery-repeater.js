@@ -44,12 +44,12 @@ var Repeater = new Class({
     },
 
     addContainer: function () {
-        this.i++;
         var newContainer = jQuery(this.container).clone(this.options.withDataAndEvents, this.options.deepWithDataAndEvents);
         this.incrementContainerAttributes(newContainer);
         this.initContainerButtons(newContainer);
         jQuery(newContainer).appendTo(this.wrapper);
         this.options.addCallback();
+        this.i++;
     },
 
     removeContainer: function (container) {
@@ -78,7 +78,7 @@ var Repeater = new Class({
         parts = name.split("[]");
         if (parts.length === 1) {
             //Just your basic name, no array
-            return name + '_' + this.i;
+            return name + '[' + this.i + ']';
         } else if (parts.length === 2) {
             //We have an array
             return parts[0] + '[' + this.i + ']' + parts[1];
