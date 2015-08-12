@@ -1,3 +1,5 @@
+![Bower version](https://img.shields.io/bower/v/jquery-repeater.svg?style=flat-square) 
+![GitHub issue](https://img.shields.io/github/issues/incraigulous/jquery-repeater.svg?style=flat-square)
 # JQuery Repeater
 jQuery repeating fields. Includes the ability to add and remove fields and keeps up with ID and name incrementing. Easy Peasy. Requires [class.js](https://classjs.readthedocs.org/en/latest/) which is included in the bower_components folder if you're not using Bower.
 
@@ -11,6 +13,7 @@ Instantiate a new Repeater class and pass in your element. You can also pass an 
 //All options are optional.
     new Repeater($('.repeatable'), {
         addSelector: '.repeater-add', //The css selector for the add button.
+        addSelectorOut: false, //If add button outside repeater-wrap.
         removeSelector: '.repeater-remove', //The css selector for the remove button.
         withDataAndEvents: false, //Should data and events on repeatable sections be cloned?
         deepWithDataAndEvents: false, //Should data and events of repeatable sections descendants be cloned?
@@ -18,6 +21,9 @@ Instantiate a new Repeater class and pass in your element. You can also pass an 
         wrapperHtml: "<div class='repeater-wrap'></div>" //HTML for an element to wrap all repeatable sections in.
     });
 ````
+##TODO
+- Fixed bug  #1
+- Fixed double #id
 
 ##How to install it
 Download or clone it from directly from Github or install via Bower:
