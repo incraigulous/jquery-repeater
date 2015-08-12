@@ -1,6 +1,7 @@
 var Repeater = new Class({
     options: {
         addSelector: '.repeater-add',
+        addSelectorOut: false,
         removeSelector: '.repeater-remove',
         withDataAndEvents: false,
         deepWithDataAndEvents: false,
@@ -12,31 +13,30 @@ var Repeater = new Class({
     wrapper: null,
 
     initialize: function (container, options) {
-        jQuery.extend(true, {}, this.options, options);
 
-        jQuery(container).wrap(this.options.wrapperHtml);
-        this.wrapper = jQuery(container).parent();
+        $.extend(this.options, options);
 
-        this.container = jQuery(container).clone(true, true);
-        jQuery(container).remove();
+        $(container).wrap(this.options.wrapperHtml);
+        this.wrapper = $(container).parent();
+
+        this.container = $(container).clone(true, true);
+        $(container).remove();
         this.addContainer();
 
-        this.initContainerButtons(this.container);
+        var $wrap = this.options.addSelectorOut ? $(this.wrapper).closest('form') : $(this.wrapper);
+
+        $wrap.on('click', this.options.addSelector, $.proxy(this.addContainer, this) );
+
     },
 
     initContainerButtons: function (container, withRemove) {
         withRemove = typeof withRemove !== 'undefined' ? withRemove : true;
 
         var self = this;
-        jQuery(container).find(this.options.addSelector).each(function(index, el) {
-            jQuery(el).on("click", function(event) {
-                self.addContainer();
-            });
-        });
 
         if (withRemove) {
-            jQuery(container).find(this.options.removeSelector).each(function(index, el) {
-                jQuery(el).on("click", function(event) {
+            $(container).find(this.options.removeSelector).each(function(index, el) {
+                $(el).one("click", function(event) {
                     self.removeContainer(container);
                 });
             });
@@ -44,28 +44,28 @@ var Repeater = new Class({
     },
 
     addContainer: function () {
-        var newContainer = jQuery(this.container).clone(this.options.withDataAndEvents, this.options.deepWithDataAndEvents);
+        var newContainer = $(this.container).clone(this.options.withDataAndEvents, this.options.deepWithDataAndEvents);
         this.incrementContainerAttributes(newContainer);
         this.initContainerButtons(newContainer);
-        jQuery(newContainer).appendTo(this.wrapper);
+        $(newContainer).appendTo(this.wrapper);
         this.options.addCallback();
         this.i++;
     },
 
     removeContainer: function (container) {
-        jQuery(container).remove();
+        $(container).remove();
     },
 
     incrementContainerAttributes: function (container) {
         var self = this;
-        jQuery(container).find("*").each(function(index, el) {
-            var id = jQuery(el).attr('id');
-            var name = jQuery(el).attr('name');
+        $(container).find("*").each(function(index, el) {
+            var id = $(el).attr('id');
+            var name = $(el).attr('name');
             if (id) {
-                jQuery(el).attr('id', self.getIncrementedId(id));
+                $(el).attr('id', self.getIncrementedId(id));
             }
             if (name) {
-                jQuery(el).attr('name', self.getIncrementedName(name));
+                $(el).attr('name', self.getIncrementedName(name));
             }
         });
     },
@@ -75,7 +75,7 @@ var Repeater = new Class({
     },
 
     getIncrementedName: function (name) {
-        parts = name.split("[]");
+        var parts = name.split("[]");
         if (parts.length === 1) {
             //Just your basic name, no array
             return name + '[' + this.i + ']';
