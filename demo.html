@@ -10,7 +10,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         .repeatable {
-            padding: 20px;
+            padding-bottom: 20px;
         }
         .repeatable.repeatable-button-in .repeater-add {
             display: none;
@@ -27,61 +27,23 @@
 </head>
 <body>
 <div class="container">
-
-        <h1>JQuery Repeater Demo</h1>
-
+    <h1>JQuery Repeater Demo</h1>
     <p>Get it on <a href="https://github.com/incraigulous/jquery-repeater">Github</a> or <a href="http://bower.io/search/?q=jquery%20repeater">Bower</a>.</p>
 
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <form role="form">
-            <legend>Repeater add button in repeater wrap</legend>
-            <div class="repeatable  repeatable-button-in col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                        <div class="form-group">
-                            <label>Field 1:</label>
-                            <input type="text" class="form-control" id="foo-bar" name="foo[][bar]">
-                        </div>
-                        <div class="form-group">
-                            <label>Field 2:</label>
-                            <input type="text" class="form-control" id="foo-baz" name="foo[][baz]">
-                        </div>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <button class="btn btn-danger repeater-remove" type="button"><span class="glyphicon glyphicon-minus"></span></button>
-                        <button class="btn btn-success repeater-add" type="button"><span class="glyphicon glyphicon-plus"></span></button>
-                    </div>
-                </div>
+    <form role="form">
+        <div class="repeatable">
+            <div class="form-group">
+                <label>Field 1:</label>
+                <input type="text" class="form-control" id="foo-bar" name="foo[][bar]">
             </div>
-         </form>
-    </div>
-    
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-         <form role="form">
-             <legend>Repeater add button out of repeater wrap</legend>
-             <div class="repeatable repeatable-button-out col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                 <div class="row">
-                     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                         <div class="form-group">
-                             <label>Field 1:</label>
-                             <input type="text" class="form-control" id="foo-bar" name="foo[][bar]">
-                         </div>
-                         <div class="form-group">
-                             <label>Field 2:</label>
-                             <input type="text" class="form-control" id="foo-baz" name="foo[][baz]">
-                         </div>
-                     </div>
-                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                         <button class="btn btn-danger repeater-remove" type="button"><span class="glyphicon glyphicon-minus"></span></button>
-                     </div>
-                 </div>
-             </div>
-             <div class="clearfix"></div>
-             <div class="form-group">
-                 <button class="btn btn-success btn-lg btn-block repeater-add" type="button"><span class="glyphicon glyphicon-plus"></span></button>
-             </div>
-          </form>
-      </div>
+            <div class="form-group">
+                <label>Field 2:</label>
+                <input type="text" class="form-control" id="foo-baz" name="foo[][baz]">
+            </div>
+            <button class="btn btn-danger repeater-remove" type="button"><span class="glyphicon glyphicon-minus"></span></button>
+            <button class="btn btn-success repeater-add" type="button"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+     </form>
 </div>
 
 <!-- jQuery and class.js are required -->
@@ -96,25 +58,14 @@
 <script type="text/javascript">
 
     //All options are optional.
-    new Repeater($('.repeatable-button-in'), {
+    new Repeater($('.repeatable'), {
         addSelector: '.repeater-add', //The css selector for the add button.
-        addSelectorOut: false, //The css selector for the add button out of repeater-wrap.
+        addSelectorOut: false, //Set to true if the add selector is outside the repeater wrap.
         removeSelector: '.repeater-remove', //The css selector for the remove button.
         withDataAndEvents: false, //Should data and events on repeatable sections be cloned?
         deepWithDataAndEvents: false, //Should data and events of repeatable sections descendants be cloned?
         addCallback: function(){
-            console.log( 'add in wrap callback' );
-        }, //A callback function that generated repeatable sections will be passed into.
-        wrapperHtml: "<div class='repeater-wrap'></div>" //HTML for an element to wrap all repeatable sections in.
-    });
-    new Repeater($('.repeatable-button-out'), {
-        addSelector: '.repeater-add', //The css selector for the add button.
-        addSelectorOut: true, //The css selector for the add button out of repeater-wrap.
-        removeSelector: '.repeater-remove', //The css selector for the remove button.
-        withDataAndEvents: false, //Should data and events on repeatable sections be cloned?
-        deepWithDataAndEvents: false, //Should data and events of repeatable sections descendants be cloned?
-        addCallback: function(){
-            console.log( 'add out wrap callback' );
+            console.log("Am I repeating myself?");
         }, //A callback function that generated repeatable sections will be passed into.
         wrapperHtml: "<div class='repeater-wrap'></div>" //HTML for an element to wrap all repeatable sections in.
     });
