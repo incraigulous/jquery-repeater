@@ -4,7 +4,7 @@
 jQuery repeating fields. Includes the ability to add and remove fields and keeps up with ID and name incrementing. Easy Peasy. Requires [class.js](https://classjs.readthedocs.org/en/latest/) which is included in the bower_components folder if you're not using Bower.
 
 ##Demo
-Check out the demo here: [https://cdn.rawgit.com/incraigulous/jquery-repeater/master/demo.html](https://cdn.rawgit.com/incraigulous/jquery-repeater/master/demo.html)
+Check out the demo here: [http://cdn.rawgit.com/incraigulous/jquery-repeater/master/demo.html](http://cdn.rawgit.com/incraigulous/jquery-repeater/master/demo.html)
 
 ##How to use it
 Instantiate a new Repeater class and pass in your element. You can also pass an options object as your second parameter but this is optional.
