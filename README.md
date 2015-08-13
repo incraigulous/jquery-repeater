@@ -21,9 +21,6 @@ Instantiate a new Repeater class and pass in your element. You can also pass an 
         wrapperHtml: "<div class='repeater-wrap'></div>" //HTML for an element to wrap all repeatable sections in.
     });
 ````
-##TODO
-- Fixed bug  #1
-- Fixed double #id
 
 ##How to install it
 Download or clone it from directly from Github or install via Bower:
