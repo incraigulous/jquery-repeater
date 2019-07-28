@@ -5,7 +5,7 @@ var Repeater = new Class({
         removeSelector: '.repeater-remove',
         withDataAndEvents: false,
         deepWithDataAndEvents: false,
-        addCallback: function(){},
+        addCallback: function( newContainer ){},
         wrapperHtml: "<div class='repeater-wrap'></div>"
     },
     i: 0,
@@ -48,7 +48,7 @@ var Repeater = new Class({
         this.incrementContainerAttributes(newContainer);
         this.initContainerButtons(newContainer);
         $(newContainer).appendTo(this.wrapper);
-        this.options.addCallback();
+        this.options.addCallback( newContainer );
         this.i++;
     },
 
